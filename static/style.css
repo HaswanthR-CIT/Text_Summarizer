@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ecfdf5; /* Mint */
+}
+
+.container {
+    transition: all 0.3s ease;
+}
+
+.text-violet-900 {
+    color: #6b21a8; /* Violet */
+}
+
+.bg-mint-50 {
+    background-color: #ecfdf5; /* Mint */
+}
+
+.bg-teal-600 {
+    background-color: #0d9488; /* Teal */
+}
+
+.bg-teal-700 {
+    background-color: #0f766e; /* Darker Teal */
+}
+
+.text-coral-500 {
+    color: #f87171; /* Coral */
+}
+
+.shadow-coral-200 {
+    --tw-shadow-color: #ff8781; /* Coral shadow */
+}
+
+.focus\:ring-teal-500:focus {
+    --tw-ring-color: #14b8a6; /* Teal ring */
+}
+
+.topics {
+    margin: 1rem 0;
+}
+
+.topic-tag {
+    display: inline-block;
+    background: linear-gradient(45deg, #14b8a6, #8b5cf6); /* Teal to Violet */
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.topic-tag:hover {
+    background: linear-gradient(45deg, #0f766e, #6d28d9); /* Darker gradient */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.highlight {
+    background: linear-gradient(45deg, #fef9c3, #ffedd5); /* Yellow to Coral tint */
+    color: #1f2937;
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.error {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(5px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="min-h-screen bg-mint-50 flex items-center justify-center p-4">
+    <div class="container bg-white rounded-2xl shadow-lg shadow-coral-200/50 p-6 md:p-8 w-full max-w-2xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-violet-900 mb-6 text-center">Text Summarizer</h1>
+        <form method="POST" class="space-y-5">
+            <label for="text" class="block text-lg font-medium text-gray-700">Your Text</label>
+            <textarea id="text" name="text" rows="6" placeholder="Paste or type your text here (at least 30 words)" class="w-full p-4 bg-mint-50 border border-gray-200 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all duration-300"></textarea>
+            <label for="length" class="block text-lg font-medium text-gray-700">Summary Length</label>
+            <select id="length" name="length" class="w-full p-3 bg-mint-50 border border-gray-200 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all duration-300">
+                <option value="short">Short (1-2 sentences)</option>
+                <option value="medium" selected>Medium (2-3 sentences)</option>
+                <option value="long">Long (3-4 sentences)</option>
+            </select>
+            <button type="submit" class="w-full py-3 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition-all duration-300">Generate Summary</button>
+        </form>
+
+        {% if error %}
+            <p class="error mt-4 text-coral-500 font-medium text-center">{{ error }}</p>
+        {% endif %}
+
+        {% if summary %}
+            <h2 class="text-xl font-semibold text-violet-900 mt-8">Summary</h2>
+            <p class="p-4 bg-mint-50 rounded-lg text-gray-800">{{ summary }}</p>
+            <h2 class="text-xl font-semibold text-violet-900 mt-6">Topics</h2>
+            <div class="topics flex flex-wrap gap-2">
+                {% for topic in topics %}
+                    <span class="topic-tag" data-topic="{{ topic }}">{{ topic }}</span>
+                {% endfor %}
+            </div>
+            <h2 class="text-xl font-semibold text-violet-900 mt-6">Original Text</h2>
+            <p id="original-text" class="p-4 bg-mint-50 rounded-lg text-gray-800">{{ original_text }}</p>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
